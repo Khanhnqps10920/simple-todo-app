@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class Input extends Component {
   render() {
 
-    const { item, changed, clicked } = this.props;
+    const { title, changed, clicked, editItem } = this.props;
 
     return (
       <div className="card card-body my-3">
@@ -15,7 +15,7 @@ class Input extends Component {
               </div>
             </div>
             <input
-              value={item}
+              value={title}
               onChange={changed}
               type="text"
               className="form-control text-capitalize"
@@ -24,7 +24,12 @@ class Input extends Component {
           <button
             onClick={clicked}
             type="submit"
-            className="btn btn-block btn-primary mt-3">add item</button>
+            className={
+              editItem ? 'btn btn-block btn-success mt-3'
+                : 'btn btn-block btn-primary mt-3'
+            }>
+            {editItem ? 'edit item' : 'add item'}
+          </button>
         </form>
       </div>
     );
